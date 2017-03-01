@@ -79,34 +79,26 @@
 
 $(document).ready(function(){
 
-$('.number').on('click', function(){
-    $()
+    var operatorPressed;
+    var first;
+    var second;
 
+    $('.number').on('click', function(){
+
+        if(operatorPressed){
+
+            $("#secondNumber").append($(this).val());
+            second = $("#secondNumber").text();
+
+        } else{
+
+            $("#firstNumber").append($(this).val());
+            first = $("#firstNumber").text();
+        }
+
+    });
 });
 
-
-
-
-isNumber = function(value) {
-  return !isNaN(value);
-}
-
-isOperator = function(value) {
-  return value === '/' || value === '*' || value === '+' || value === '-';
-};
-
-operate = function(a, b, operation) {
-  a = parseFloat(a);
-  b = parseFloat(b);
-  console.log(a, b, operation);
-  if (operation === '+') return a + b;
-  if (operation === '-') return a - b;
-  if (operation === '*') return a * b;
-  if (operation === '/') return a / b;
-}
-
-
-});
 
 </script>
 </body>
