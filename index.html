@@ -97,6 +97,16 @@ $(document).ready(function(){
         }
 
     });
+    
+    $('.operator').on('click', function(){
+
+        operatorPressed = true;
+
+        op = $(this).text();
+
+        $("#operator").append($(this).val());
+
+    });
 });
 
 
