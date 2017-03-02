@@ -79,34 +79,80 @@
 
 $(document).ready(function(){
 
+  //Global variables 
     var operatorPressed;
     var first;
     var second;
+
+  //Grab the numbers and add them to the right panel once clicked
 
     $('.number').on('click', function(){
 
         if(operatorPressed){
 
-            $("#secondNumber").append($(this).val());
-            second = $("#secondNumber").text();
+            $("#second-number").append($(this).val());
+            second = $("#second-number").text();
 
         } else{
 
-            $("#firstNumber").append($(this).val());
-            first = $("#firstNumber").text();
+            $("#first-number").append($(this).val());
+            first = $("#first-number").text();
         }
 
     });
-    
+
+  //Add the operators and add them to the right panel once clicked
     $('.operator').on('click', function(){
 
         operatorPressed = true;
 
         op = $(this).text();
 
-        $("#operator").append($(this).val());
+        $("#operator").append($(this).html());
 
     });
+
+    $('.equal').on('click', function(){
+
+        var math;
+
+        if(op == "+"){
+
+           math = parseFloat(first) + parseFloat(second);
+
+            $('#result').append(math);
+
+        } else if(op == "-") {
+
+            math = parseFloat(first) - parseFloat(second);
+            $('#result').append(math);
+
+        } else if(op == "/") {
+
+            math = parseFloat(first) / parseFloat(second);
+            $('#result').append(math);
+
+        } else if(op == "^") {
+
+            math = Math.pow(parseFloat(first), parseFloat(second));
+            $('#result').append(math);
+
+        } else if(op == "x"){
+
+            math = parseFloat(first) * parseFloat(second);
+            $('#result').append(math);    
+        }
+
+    });
+
+
+    $('#button-clear').on('click', function(){
+
+        $('#first-number, #second-number, #operator, #result').empty();
+
+        operatorPressed = false;
+    });
+
 });
 
 
